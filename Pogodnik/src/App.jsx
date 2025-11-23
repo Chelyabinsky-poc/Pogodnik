@@ -14,7 +14,6 @@ function App() {
     setCity(cityName);
   };
 
-  // ✅ Определяем тему НА ОСНОВЕ АКТУАЛЬНЫХ данных
   const isWarm = weatherData?.main?.temp > 20;
 
   return (
@@ -23,10 +22,6 @@ function App() {
       <CityInput onSubmit={handleCitySubmit} />
       <WeatherCard
         city={city}
-        /* ❌ УДАЛИ эти 4 пропса — они больше не нужны: */
-        // weatherData={weatherData}
-        // error={error}
-        // loading={loading}
         onWeatherUpdate={setWeatherData}
         onError={setError}
         onLoadingChange={setLoading}
