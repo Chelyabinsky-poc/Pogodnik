@@ -38,7 +38,7 @@ export default function WeatherCard({
   const wind = data.wind || {};
 
   const condition = weather[0] || {};
-  const iconCode = condition.icon || '01d'; // fallback: clear sky
+  const iconCode = condition.icon || '01d';
   const description = condition.description || '—';
   const temp = typeof main.temp === 'number' ? Math.round(main.temp) : '—';
   const feelsLike = typeof main.feels_like === 'number' ? Math.round(main.feels_like) : '—';
