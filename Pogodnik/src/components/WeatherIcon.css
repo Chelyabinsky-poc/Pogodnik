@@ -1,0 +1,174 @@
+.weather-icon {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: 0 auto 1rem;
+  /* background: rgba(255,0,0,0.03); */ /* отладка */
+}
+
+/* ☀️ Солнце */
+.sun::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background: #FFD166; /* тёплое жёлтое */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 20px #FFD166;
+  animation: pulse 3s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.6; }
+}
+
+/* ☁️ Облако */
+.cloud::before {
+  content: '';
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  width: 60px;
+  height: 20px;
+  background: #aaa;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow:
+    0 -12px 0 6px #aaa,
+    0 4px 6px rgba(0,0,0,0.15);
+}
+
+/* ☔ Дождь */
+.rain::before {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 60px;
+  height: 20px;
+  background: #aaa;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 -10px 0 5px #aaa;
+}
+
+.rain::after {
+  content: '';
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  width: 2px;
+  height: 24px;
+  background: #444;
+  transform: translateX(-50%);
+  animation: rain 0.6s infinite linear;
+}
+
+@keyframes rain {
+  0% { top: 65%; opacity: 0; }
+  20% { opacity: 1; }
+  100% { top: 95%; opacity: 0; }
+}
+
+/* ⚡ Гроза */
+.thunder::before {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 60px;
+  height: 20px;
+  background: #aaa;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 -10px 0 5px #aaa;
+}
+
+.thunder::after {
+  content: '⚡';
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 26px;
+  animation: flash 2s infinite;
+}
+
+@keyframes flash {
+  0%, 90% { opacity: 0; }
+  92% { opacity: 1; }
+  94% { opacity: 0; }
+  96% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* ❄️ Снег */
+.snow::before {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 60px;
+  height: 20px;
+  background: #aaa;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 -10px 0 5px #aaa;
+}
+
+.snow::after {
+  content: '❄';
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 22px;
+  opacity: 0.9;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+  animation: snowfall 4s infinite;
+}
+
+@keyframes snowfall {
+  0% {
+    top: 20%;
+    transform: translate(-50%, -50%) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    top: 90%;
+    transform: translate(-60%, -50%) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* 🌤️ Солнце + Облако */
+.sun-cloud::before {
+  content: '';
+  position: absolute;
+  top: 35%;
+  left: 30%;
+  width: 24px;
+  height: 24px;
+  background: #FFD166;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #FFD166;
+  animation: pulse 3s infinite alternate;
+}
+
+.sun-cloud::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 65%;
+  width: 44px;
+  height: 18px;
+  background: #aaa;
+  border-radius: 50%;
+  box-shadow: 0 -9px 0 4px #aaa;
+}

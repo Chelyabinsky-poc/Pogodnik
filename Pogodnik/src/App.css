@@ -1,0 +1,102 @@
+/* src/App.css */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem;
+  transition: background-color 0.5s ease;
+}
+
+.app.warm {
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  color: #333;
+}
+
+.app.cool {
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
+  color: #222;
+}
+
+.time-display {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.time {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.date {
+  font-size: 1.2rem;
+  opacity: 0.8;
+}
+
+.city-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.city-input input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+.city-input button {
+  padding: 0.75rem 1.25rem;
+  background: #4a6fa5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.city-input button:hover {
+  background: #3a5a80;
+}
+
+.weather-card {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  backdrop-filter: blur(10px);
+}
+
+.weather-card.error {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.weather-card.hint {
+  color: #666;
+  font-style: italic;
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.temp {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+}
+
+.desc {
+  font-style: italic;
+  margin-top: 1rem;
+}
