@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { useWeatherContext } from '../context/WeatherContext'; // ← хук
 
-export default function CityInput({ onSubmit }) {
+export default function CityInput() {
   const [inputValue, setInputValue] = useState('');
+  const { handleCitySubmit } = useWeatherContext(); // ← из контекста
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputValue.trim()) {
-      onSubmit(inputValue.trim());
+      handleCitySubmit(inputValue.trim());
       setInputValue('');
     }
   };
