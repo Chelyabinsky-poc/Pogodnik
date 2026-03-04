@@ -2,9 +2,21 @@ import React from 'react';
 import { useWeatherContext } from '../context/WeatherContext'; // ← хук
 import WeatherIcon from './WeatherIcon';
 
-export default function WeatherCard() {
-  const { weatherData, loading, error, city } = useWeatherContext(); // ← из контекста
+export default function WeatherCard({
+  city,
+  onWeatherUpdate,
+  onError,
+  onLoadingChange,
+}) {
+  const { data, loading, error } = useWeather(city);
 
+ React.useEffect(() => {
+  onWeatherUpdate(data);
+  onError(error);
+  onLoadingChange(loading);
+}, [data, error, loading, city, onWeatherUpdate, onError, onLoadingChange]);
+
+  // === Loading / Error states ===
   if (loading) {
     return <div className="weather-card">Загрузка погоды...</div>;
   }
@@ -21,10 +33,11 @@ export default function WeatherCard() {
     return <div className="weather-card hint">Введите город выше 👆</div>;
   }
 
-  const name = weatherData.name || '—';
-  const main = weatherData.main || {};
-  const weather = Array.isArray(weatherData.weather) ? weatherData.weather : [];
-  const wind = weatherData.wind || {};
+  // === Validate & extract weather data safely ===
+  const name = data.name || '—';
+  const main = data.main || {};
+  const weather = Array.isArray(data.weather) ? data.weather : [];
+  const wind = data.wind || {};
 
   const condition = weather[0] || {};
   const iconCode = condition.icon || '01d';
@@ -33,6 +46,9 @@ export default function WeatherCard() {
   const feelsLike = typeof main.feels_like === 'number' ? Math.round(main.feels_like) : '—';
   const humidity = main.humidity || '—';
   const windSpeed = wind.speed || '—';
+
+  // Debug (можно убрать в продакшене)
+  // console.log('[WeatherCard] Data:', { name, iconCode, temp, condition });
 
   return (
     <div className="weather-card">

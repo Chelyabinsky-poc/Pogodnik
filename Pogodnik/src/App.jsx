@@ -6,14 +6,28 @@ import { useWeatherContext } from './context/WeatherContext';
 import './App.css';
 
 function App() {
-  const { weatherData } = useWeatherContext();
+  const [city, setCity] = useState('');
+  const [weatherData, setWeatherData] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  const handleCitySubmit = (cityName) => {
+    setCity(cityName);
+  };
+
+  // ✅ Определяем тему НА ОСНОВЕ АКТУАЛЬНЫХ данных
   const isWarm = weatherData?.main?.temp > 20;
 
   return (
     <div className={`app ${isWarm ? 'warm' : 'cool'}`}>
       <TimeDisplay />
-      <CityInput /> {}
-      <WeatherCard /> {}
+      <CityInput onSubmit={handleCitySubmit} />
+      <WeatherCard
+        city={city}
+        onWeatherUpdate={setWeatherData}
+        onError={setError}
+        onLoadingChange={setLoading}
+      />
     </div>
   );
 }
