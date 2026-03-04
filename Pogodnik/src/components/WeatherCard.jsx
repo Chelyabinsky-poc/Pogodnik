@@ -16,7 +16,6 @@ export default function WeatherCard({
   onLoadingChange(loading);
 }, [data, error, loading, city, onWeatherUpdate, onError, onLoadingChange]);
 
-  // === Loading / Error states ===
   if (loading) {
     return <div className="weather-card">Загрузка погоды...</div>;
   }
@@ -33,7 +32,6 @@ export default function WeatherCard({
     return <div className="weather-card hint">Введите город выше 👆</div>;
   }
 
-  // === Validate & extract weather data safely ===
   const name = data.name || '—';
   const main = data.main || {};
   const weather = Array.isArray(data.weather) ? data.weather : [];
@@ -46,9 +44,6 @@ export default function WeatherCard({
   const feelsLike = typeof main.feels_like === 'number' ? Math.round(main.feels_like) : '—';
   const humidity = main.humidity || '—';
   const windSpeed = wind.speed || '—';
-
-  // Debug (можно убрать в продакшене)
-  // console.log('[WeatherCard] Data:', { name, iconCode, temp, condition });
 
   return (
     <div className="weather-card">

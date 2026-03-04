@@ -15,7 +15,6 @@ function App() {
     setCity(cityName);
   };
 
-  // ✅ Определяем тему НА ОСНОВЕ АКТУАЛЬНЫХ данных
   const isWarm = weatherData?.main?.temp > 20;
 
   return (

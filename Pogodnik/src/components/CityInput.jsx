@@ -3,7 +3,7 @@ import { useWeatherContext } from '../context/WeatherContext'; // ← хук
 
 export default function CityInput() {
   const [inputValue, setInputValue] = useState('');
-  const { handleCitySubmit } = useWeatherContext(); // ← из контекста
+  const { handleCitySubmit } = useWeatherContext();
 
   const handleSubmit = (e) => {
     e.preventDefault();
